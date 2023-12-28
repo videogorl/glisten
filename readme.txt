@@ -29,3 +29,17 @@ This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
+
+Krona One Font
+Copyright (c) 2011, Sorkin Type Co (www.sorkintype.com) with Reserved Font Name "Krona". 
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL 
+License URL: http://scripts.sil.org/OFL 
+Source: www.sorkintype.com
+-- End of Krona One Font credits --
+
+Noto Sans Font
+Copyright 2022 The Noto Project Authors (https://github.com/notofonts/latin-greek-cyrillic) 
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL 
+License URL: https://scripts.sil.org/OFL 
+Source: http://www.google.com/get/noto/
+-- End of Noto Sans Font credits --
