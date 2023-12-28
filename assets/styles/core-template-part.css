@@ -5,6 +5,9 @@ header {
 	top: calc( 0px + var(--wp-admin--admin-bar--height, 0px) );
 	z-index: 9999;
 }
-footer {
-	opacity: .5;
+footer a:where(:not(.wp-element-button)) {
+	opacity: 0.5;
+}
+footer a:where(:not(.wp-element-button)):where(:hover, :focus) {
+	opacity: 1;
 }
