@@ -1,0 +1,6 @@
+/* p a:where(:not(.wp-element-button)) {
+	opacity: 0.5;
+}
+p a:where(:not(.wp-element-button)):where(:hover, :focus, :active) {
+	opacity: 1;
+} */
