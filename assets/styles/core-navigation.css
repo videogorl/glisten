@@ -1,0 +1,12 @@
+.wp-block-navigation__responsive-container.has-modal-open.is-menu-open.has-base-background-color {
+	backdrop-filter: var(--wp--custom--core-navigation--modal--filter);
+	background-color: transparent !important;
+}
+.wp-block-navigation__responsive-container.has-modal-open.is-menu-open.has-base-background-color::before {
+	background-color: var(--wp--custom--core-navigation--modal--color--background);
+	position: absolute;
+	inset: 0px;
+	offset: 0px;
+	content: "";
+	opacity: var(--wp--custom--core-navigation--modal--opacity);
+}
