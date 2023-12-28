@@ -14,3 +14,16 @@ Text Domain: glisten
 Tags: blog, portfolio, grid-layout, one-column, two-columns, wide-blocks, block-patterns, block-styles, custom-colors, custom-logo, featured-images, full-site-editing, full-width-template, post-formats, sticky-post, style-variations, template-editing, 
 */
 
+.w-100 {
+	width: 100%;
+}
+
+.is-style-highlight-border {
+	background: linear-gradient(var(--wp--preset--color--base),var(--wp--preset--color--base)) padding-box,
+              var(--wp--preset--gradient--highlight-hollow) border-box;
+}
+
+.is-style-gray-border {
+	background: linear-gradient(var(--wp--preset--color--base),var(--wp--preset--color--base)) padding-box,
+              var(--wp--preset--gradient--gray-hollow) border-box;
+}
