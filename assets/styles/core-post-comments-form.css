@@ -1,0 +1,24 @@
+.wp-block-post-comments-form .logged-in-as {
+	opacity: .5;
+
+	font-size: var(--wp--custom--text-styles--half-important--typography--font-size);
+	font-weight: var(--wp--custom--text-styles--half-important--typography--font-weight);
+	line-height: var(--wp--custom--text-styles--half-important--typography--line-height);
+	letter-spacing: var(--wp--custom--text-styles--half-important--typography--letter-spacing);
+}
+
+.wp-block-post-comments-form .form-submit {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.wp-block-post-comments-form .comment-reply-title {
+	position: relative;
+}
+.wp-block-post-comments-form .comment-reply-title::before {
+	--icon-size: 23px;
+	mask-image: url( ../icons/forum.svg );
+	position: absolute;
+	right: calc(100% + 10px);
+	top: 3px;
+}
