@@ -5,16 +5,3 @@ p a:where(:not(.wp-element-button)):where(:hover, :focus, :active) {
 	opacity: 1;
 } */
 
-.is-style-text-half-important {
-	font-size: var(--wp--custom--text-styles--half-important--typography--font-size);
-	font-weight: var(--wp--custom--text-styles--half-important--typography--font-weight);
-	line-height: var(--wp--custom--text-styles--half-important--typography--line-height);
-	letter-spacing: var(--wp--custom--text-styles--half-important--typography--letter-spacing);
-}
-
-.is-style-text-action {
-	font-size: var(--wp--custom--text-styles--action--typography--font-size);
-	font-weight: var(--wp--custom--text-styles--action--typography--font-weight);
-	line-height: var(--wp--custom--text-styles--action--typography--line-height);
-	text-transform: var(--wp--custom--text-styles--action--typography--text-transform);
-}
