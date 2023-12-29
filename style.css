@@ -4,10 +4,10 @@ Theme URI: https://andreasjr.com/projects/glisten
 Author: Andreas Reif
 Author URI: https://andreasjr.com
 Description: A block theme focused on a great reading experience.
-Requires at least: 6.0
+Requires at least: 6.4
 Tested up to: 6.4.2
-Requires PHP: 5.7
-Version: 1.0.0
+Requires PHP: 7.4
+Version: 0.1.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: glisten
@@ -18,12 +18,83 @@ Tags: blog, portfolio, grid-layout, one-column, two-columns, wide-blocks, block-
 	width: 100%;
 }
 
+.opacity-75 {
+	opacity: .75;
+}
+.opacity-50 {
+	opacity: .5;
+}
+.opacity-25 {
+	opacity: .25;
+}
+
 .is-style-highlight-border {
-	background: linear-gradient(var(--wp--preset--color--base),var(--wp--preset--color--base)) padding-box,
-              var(--wp--preset--gradient--highlight-hollow) border-box;
+	background: 
+		var(--wp--custom--gradient--padding-mask),
+		var(--wp--custom--gradient--border-mask),
+		var(--wp--preset--gradient--highlight) border-box;
 }
 
 .is-style-gray-border {
-	background: linear-gradient(var(--wp--preset--color--base),var(--wp--preset--color--base)) padding-box,
-              var(--wp--preset--gradient--gray-hollow) border-box;
+	background: 
+		var(--wp--custom--gradient--padding-mask),
+		var(--wp--custom--gradient--border-mask),
+		linear-gradient(var(--wp--preset--color--gray), var(--wp--preset--color--gray)) border-box;
+}
+
+/* Post Template */
+body:where(.post-template-default, .page-template-default) .featured-image-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 75vh;
+	min-height: 500px;
+	z-index: -1;
+	margin: 0 !important;
+}
+body:where(.post-template-default, .page-template-default) .featured-image-container::before {
+	content: "";
+	display: block;
+	z-index: 2;
+	background-image: var(--wp--custom--gradient--gloss);
+	opacity: .5;
+	position: absolute;
+	inset: 0;
+	offset: 0;
+}
+
+body:where(.post-template-default, .page-template-default) .featured-image-container figure {
+	mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.00) 100%, #FFF 100%);
+	filter: blur(7.5px);
+}
+body:where(.post-template-default, .page-template-default) .featured-image-container figure,
+body:where(.post-template-default, .page-template-default) .featured-image-container figure img {
+	height: 100%;
+}
+
+/**
+ * Icons
+ */
+.wp-block-post-comments-form .comment-reply-title::before,
+.wp-block-post-terms::before {
+	--icon-size: 23px;
+	display: block;
+	content: "";
+	height: var(--icon-size);
+	width: var(--icon-size);
+	mask-position: center center;
+	mask-repeat: no-repeat;
+	mask-size: contain;
+	background-color: currentColor;
+}
+@media screen and (max-width: 728px) {
+	.wp-block-post-comments-form .comment-reply-title::before,
+	.wp-block-post-terms::before {
+		position: relative !important;
+		clear: both;
+		top: unset !important;
+		left: unset;
+		right: unset !important;
+	}
 }
