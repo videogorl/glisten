@@ -1,0 +1,24 @@
+.wp-block-post-date {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+.wp-block-post-date time {
+	flex-grow: 1;
+}
+.wp-block-post-date::before {
+	display: block;
+	content: "";
+	height: 17px;
+	width: 17px;
+	mask-position: center center;
+	mask-repeat: no-repeat;
+	display: block;
+	background-color: currentColor;
+	mask-image: url( ../icons/calendar.svg );
+}
+
+body.single-post article .wp-block-post-date::before {
+	display: none;
+}
