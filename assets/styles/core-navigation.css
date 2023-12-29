@@ -4,6 +4,7 @@
 
 .wp-block-navigation__responsive-container.has-modal-open.is-menu-open.has-base-background-color {
 	backdrop-filter: var(--wp--custom--core-navigation--modal--filter);
+	-webkit-backdrop-filter: var(--wp--custom--core-navigation--modal--filter);
 	background-color: transparent !important;
 }
 .wp-block-navigation__responsive-container.has-modal-open.is-menu-open.has-base-background-color::before {
