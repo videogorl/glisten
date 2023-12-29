@@ -1,6 +1,8 @@
 .wp-block-post-date {
+	position: relative;
+}
+.wp-block-post-date:not(.is-style-icon-section) {
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	gap: 5px;
 }
@@ -8,17 +10,10 @@
 	flex-grow: 1;
 }
 .wp-block-post-date::before {
-	display: block;
-	content: "";
-	height: 17px;
-	width: 17px;
-	mask-position: center center;
-	mask-repeat: no-repeat;
-	display: block;
-	background-color: currentColor;
-	mask-image: url( ../icons/calendar.svg );
+	--icon-size: 17px !important;
+	mask-image: url( '../icons/calendar.svg' );
 }
 
-body.single-post article .wp-block-post-date::before {
+/* body.single-post article .wp-block-post-date::before {
 	display: none;
-}
+} */

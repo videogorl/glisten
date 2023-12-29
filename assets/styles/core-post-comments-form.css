@@ -18,7 +18,4 @@
 .wp-block-post-comments-form .comment-reply-title::before {
 	--icon-size: 23px;
 	mask-image: url( ../icons/forum.svg );
-	position: absolute;
-	right: calc(100% + 10px);
-	top: 3px;
 }

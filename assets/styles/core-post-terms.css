@@ -14,8 +14,3 @@
 .wp-block-post-terms.taxonomy-post_tag::before {
 	mask-image: url( ../icons/tag.svg );
 }
-.wp-block-post-terms:not(.is-style-icon-only)::before {
-	position: absolute;
-	right: calc(100% + 10px);
-	top: 3px;
-}
