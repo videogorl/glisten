@@ -1,3 +1,21 @@
-.is-style-icon-only {
-	
+.wp-block-post-terms.is-style-icon-only 
+:where(a, .wp-block-post-terms__separator) {
+	display: none;
+}
+.wp-block-post-terms {
+	position: relative;
+}
+.wp-block-post-terms::before {
+	--icon-size: 17px !important;
+}
+.wp-block-post-terms.taxonomy-category::before {
+	mask-image: url( ../icons/category.svg );
+}
+.wp-block-post-terms.taxonomy-post_tag::before {
+	mask-image: url( ../icons/tag.svg );
+}
+.wp-block-post-terms:not(.is-style-icon-only)::before {
+	position: absolute;
+	right: calc(100% + 10px);
+	top: 3px;
 }
