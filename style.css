@@ -56,7 +56,8 @@ Tags: blog, portfolio, grid-layout, one-column, two-columns, wide-blocks, block-
 }
 
 /* Post Template */
-body:where(.post-template-default, .page-template-default) .featured-image-container {
+/* body:where(.post-template-default, .page-template-default) */
+.featured-image-container {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -68,7 +69,7 @@ body:where(.post-template-default, .page-template-default) .featured-image-conta
 	overflow: hidden;
 	mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.00) 100%, #FFF 100%);
 }
-body:where(.post-template-default, .page-template-default) .featured-image-container::before {
+.featured-image-container::before {
 	content: "";
 	display: block;
 	z-index: 2;
@@ -79,12 +80,12 @@ body:where(.post-template-default, .page-template-default) .featured-image-conta
 	offset: 0;
 }
 
-body:where(.post-template-default, .page-template-default) .featured-image-container figure {
+.featured-image-container figure {
 	filter: blur(7.5px);
 	transform: scale(1.05);
 }
-body:where(.post-template-default, .page-template-default) .featured-image-container figure,
-body:where(.post-template-default, .page-template-default) .featured-image-container figure img {
+.featured-image-container figure,
+.featured-image-container figure img {
 	height: 100%;
 }
 
