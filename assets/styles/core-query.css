@@ -1,0 +1,42 @@
+.is-style-post-grid {
+	container: post-grid;
+}
+@media screen and (min-width: 601px) {
+	.is-style-post-grid > ul.wp-block-post-template > li.wp-block-post:nth-child(even) div.post-container {
+		top: var(--wp--preset--spacing--90);
+	}
+}
+.is-style-post-grid li div.post-container {
+	position: relative;
+	overflow: hidden;
+}
+.is-style-post-grid li div.post-container::before {
+	content: "";
+	display: block;
+	z-index: 2;
+	background-image: var(--wp--custom--gradient--gloss);
+	opacity: .5;
+}
+.is-style-post-grid div.post-container figure.wp-block-post-featured-image {
+	z-index: 1;
+	filter: blur(2.5px);
+}
+.is-style-post-grid li div.post-container::before,
+.is-style-post-grid li div.post-container figure.wp-block-post-featured-image
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 50%;
+	min-height: 260px;
+	mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.29) 63.54%, rgba(0, 0, 0, 0.00) 100%, #FFF 100%);
+}
+.is-style-post-grid li div.post-container figure.wp-block-post-featured-image img {
+	height: 100%;
+	object-fit: cover;
+}
+.is-style-post-grid li div.post-container div.post-content {
+	position: relative;
+	z-index: 3;
+}
