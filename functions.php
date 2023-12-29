@@ -46,7 +46,7 @@ function enqueue_custom_block_styles() {
 		wp_enqueue_block_style(
 			$block_name,
 			array(
-				'handle' => "ollie-block-{$filename}",
+				'handle' => "glisten-block-{$filename}",
 				'src'    => get_theme_file_uri( "assets/styles/{$filename}.css" ),
 				'path'   => get_theme_file_path( "assets/styles/{$filename}.css" ),
 			)
