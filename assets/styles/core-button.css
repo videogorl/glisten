@@ -1,0 +1,8 @@
+.is-style-outline.is-style-outline.wp-block-button .wp-block-button__link:hover,
+.is-style-outline.is-style-outline.wp-block-button .wp-block-button__link:focus {
+	padding-top: calc( var(--wp--custom--button--spacing--padding--top) - var(--wp--custom--button--hover--border--width) );
+	padding-bottom: calc( var(--wp--custom--button--spacing--padding--bottom) - var(--wp--custom--button--hover--border--width) );
+	padding-left: calc( var(--wp--custom--button--spacing--padding--left) - var(--wp--custom--button--hover--border--width) );
+	padding-right: calc( var(--wp--custom--button--spacing--padding--right) - var(--wp--custom--button--hover--border--width) );
+	border-width: var(--wp--custom--button--hover--border--width);
+}
