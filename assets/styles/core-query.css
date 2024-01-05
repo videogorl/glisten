@@ -2,7 +2,7 @@
 	container: post-grid;
 }
 @media screen and (min-width: 601px) {
-	.is-style-post-grid > ul.wp-block-post-template > li.wp-block-post:nth-child(even) div.post-container {
+	body:not(.blog) .is-style-post-grid > ul.wp-block-post-template > li.wp-block-post:nth-child(even) div.post-container {
 		top: var(--wp--preset--spacing--90);
 	}
 }
