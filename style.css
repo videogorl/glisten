@@ -13,6 +13,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: glisten
 Tags: blog, portfolio, grid-layout, one-column, two-columns, wide-blocks, block-patterns, block-styles, custom-colors, custom-logo, featured-images, full-site-editing, full-width-template, post-formats, sticky-post, style-variations, template-editing, 
 */
+
+body.blog {
+	margin-top: 0;
+}
 .w-100 {
 	width: 100%;
 }
