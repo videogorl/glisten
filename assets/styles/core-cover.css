@@ -1,0 +1,12 @@
+
+.wp-block-cover.featured-image-cover .wp-block-cover__image-background {
+	mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.00) 100%);
+	filter: blur(7.5px);
+	transform: scale(1.05) translateX(-0.025);
+}
+.wp-block-cover.featured-image-cover .wp-block-cover__background {
+	display: block;
+	background-image: var(--wp--custom--gradient--gloss);
+	background-color: transparent !important;
+	opacity: .5;
+}
