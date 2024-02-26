@@ -98,19 +98,24 @@ body.blog {
  */
 :where(
 	.wp-block-post-date,
-	.wp-block-post-terms
-)::before,
-.wp-block-post-comments-form .comment-reply-title::before
+	.wp-block-post-terms,
+	.wp-block-post-comments-form .comment-reply-title,
+	.has-icon 
+)
 {
-	content: "";
-	--icon-size: 23px;
-	display: block;
-	height: var(--icon-size);
-	width: var(--icon-size);
-	mask-position: center center;
-	mask-repeat: no-repeat;
-	mask-size: contain;
-	background-color: currentColor;
+	position: relative;
+	&::before {
+		content: "";
+		--icon-size: 23px;
+		display: block;
+		height: var(--icon-size);
+		width: var(--icon-size);
+		mask-position: center center;
+		mask-repeat: no-repeat;
+		mask-size: contain;
+		background-color: currentColor;
+		mask-image: var(--local--icon);
+	}
 }
 
 @media screen and (min-width: 810px) {
@@ -119,7 +124,8 @@ body.blog {
 		.wp-block-post-date,
 		.wp-block-post-terms
 	)::before,
-	.wp-block-post-comments-form.is-style-icon-section .comment-reply-title::before {
+	.wp-block-post-comments-form.is-style-icon-section .comment-reply-title::before,
+	.has-icon::before {
 		position: absolute;
 		right: calc(100% + 10px);
 		top: 3px;
