@@ -20,6 +20,27 @@ function setup() {
 }
 add_action( 'after_setup_theme', __NAMESPACE__ . '\setup' );
 
+/**
+ * Registers the block using the metadata loaded from the `block.json` file.
+ * Behind the scenes, it registers also all assets so they can be enqueued
+ * through the block editor in the corresponding context.
+ *
+ * @see https://developer.wordpress.org/reference/functions/register_block_type/
+ */
+add_action( 'init', function() {
+	foreach (glob( plugin_dir_path( __FILE__ ) . 'blocks/build/*', GLOB_ONLYDIR ) as $folder) {
+	
+		/**
+		 * Find out if block has a helper
+		 */
+		$helper_url = $folder . '/helper.php';
+		if (file_exists( $helper_url )) {
+			include $helper_url;
+		}
+	
+		register_block_type( $folder );
+	}
+} );
 
 /**
  * Enqueue styles.
@@ -27,7 +48,7 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\setup' );
 function enqueue_style_sheet() {
 	wp_enqueue_style( sanitize_title( __NAMESPACE__ ), get_template_directory_uri() . '/style.css', array(), filemtime( get_template_directory() . '/style.css' ) );
 }
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_style_sheet' );
+add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_style_sheet' );
 
 /**
  * Load custom block styles only when the block is used.
