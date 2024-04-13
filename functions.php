@@ -140,3 +140,59 @@ function add_body_classes( $classes ) {
     return $classes;
 }
 add_filter( 'body_class', __NAMESPACE__ . '\add_body_classes' );
+
+
+/**
+ * Add transparency to colors no matter if the user has changed the palette
+ * 
+ * @link https://developer.wordpress.org/news/2023/07/05/how-to-modify-theme-json-data-using-server-side-filters/
+ */
+function add_palette_colors ($theme_json) {
+	
+	$data = $theme_json->get_data();
+	
+	$palette = $data['settings']['color']['palette']['theme'] ?? null;
+	
+	if ($palette == null) return $theme_json;
+
+	$steps = [
+		"10",
+		"25",
+		"50",
+		"75"
+	];
+	$new_palette = [];
+
+	foreach ($palette as $paint) {
+		$name 	= $paint["name"];
+		$slug 	= $paint["slug"];
+		$color 	= $paint["color"];
+
+		// If no hex, then no go
+		if  ( !str_contains($color, '#') ) continue;
+
+		// COnvert HEX to RGB
+		list($r, $g, $b) = sscanf($color, "#%02x%02x%02x");
+
+		foreach ($steps as $step) {
+			$new_palette[$slug . "-" . $step] = sprintf('rgba(%1$s, %2$s, %3$s, %4$s)', $r, $g, $b, '0.'.$step);
+		}
+
+	}
+
+	return $theme_json->update_with( [
+		'version'  => 2,
+		"settings" => [
+			"custom" => [
+				"color" => $new_palette
+			]
+		]
+	] );
+}
+
+add_action( 'after_setup_theme', function() {
+	// Add for theme
+	add_filter( 'wp_theme_json_data_theme', __NAMESPACE__ . '\add_palette_colors' );
+	// Add for user
+	add_filter( 'wp_theme_json_data_user', __NAMESPACE__ . '\add_palette_colors' );
+} );
