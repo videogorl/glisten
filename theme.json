@@ -29,6 +29,11 @@
 					"slug": "06"
 				},
 				{
+					"name": "16",
+					"size": "1rem",
+					"slug": "16"
+				},
+				{
 					"name": "25",
 					"size": "1.5625rem",
 					"slug": "25"
@@ -565,10 +570,6 @@
 			"padding": {
 				"left": "var(--wp--preset--spacing--25)",
 				"right": "var(--wp--preset--spacing--25)"
-			},
-			"margin": {
-				"top": "var(--wp--preset--spacing--180)",
-				"bottom": "var(--wp--preset--spacing--180)"
 			}
 		},
 		"blocks": {
