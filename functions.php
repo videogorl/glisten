@@ -147,7 +147,7 @@ add_filter( 'body_class', __NAMESPACE__ . '\add_body_classes' );
  * 
  * @link https://developer.wordpress.org/news/2023/07/05/how-to-modify-theme-json-data-using-server-side-filters/
  */
-function add_palette_colors ($theme_json) {
+function add_palette_colors($theme_json) {
 	
 	$data = $theme_json->get_data();
 	
@@ -159,9 +159,12 @@ function add_palette_colors ($theme_json) {
 		"10",
 		"25",
 		"50",
-		"75"
+		"75",
+		"80"
 	];
 	$new_palette = [];
+	$new_classes = "";
+	$css_class_prefix = "var(--wp--custom--color--";
 
 	foreach ($palette as $paint) {
 		$name 	= $paint["name"];
@@ -175,10 +178,20 @@ function add_palette_colors ($theme_json) {
 		list($r, $g, $b) = sscanf($color, "#%02x%02x%02x");
 
 		foreach ($steps as $step) {
-			$new_palette[$slug . "-" . $step] = sprintf('rgba(%1$s, %2$s, %3$s, %4$s)', $r, $g, $b, '0.'.$step);
+			$new_slug = $slug . "-" . $step;
+			$new_palette[$new_slug] = sprintf('rgba(%1$s, %2$s, %3$s, %4$s)', $r, $g, $b, '0.'.$step);
+
+			$new_classes .= sprintf(
+				".has-%1\$s-color { color: {$css_class_prefix}%1\$s); } .has-%1\$s-background-color { background-color: {$css_class_prefix}%1\$s); }",
+				$new_slug
+			);
 		}
 
 	}
+
+	add_action('wp_head', function() use ($new_classes) {
+		echo sprintf('<style>%1$s</style>', $new_classes);
+	});
 
 	return $theme_json->update_with( [
 		'version'  => 2,
@@ -196,3 +209,74 @@ add_action( 'after_setup_theme', function() {
 	// Add for user
 	add_filter( 'wp_theme_json_data_user', __NAMESPACE__ . '\add_palette_colors' );
 } );
+
+/**
+ * Add "has-x-y" CSS classes in the style of WordPress' auto-generated classes
+ */
+add_action('wp_head', function() {
+	$theme_json 		= json_decode( file_get_contents( get_stylesheet_directory() . '/theme.json' ), true );
+
+	// print_r($theme_json);
+	$new_classes = "";
+	$generate = [
+		[
+			"slug" 		=> "background-blur",
+			"location" 	=> "settings.custom.blur",
+			"css" 		=> "backdrop-filter: blur(%1\$s); -webkit-backdrop-filter: blur(%1\$s);"
+		],
+		[
+			"slug" 		=> "blur",
+			"location" 	=> "settings.custom.blur",
+			"css" 		=> "filter: blur(%1\$s);"
+		],
+		[
+			"slug" 		=> "background-gradient",
+			"location" 	=> "settings.custom.gradient",
+			"css" 		=> "background-image:%1\$s;"
+		]
+	];
+
+	// Loop through each of our generators above
+	foreach ($generate as $g) {
+		$slug 			= $g['slug'];
+		$location 		= $g['location'];
+		$location_alt 	=  $g['location'];
+		$css 			= $g['css'];
+
+		// Set up CSS variable location
+		$haystack 		= "settings.";
+		if (str_contains($location, $haystack)) $location_alt = substr( $location, strlen($haystack) );
+		$location_alt 	= str_replace('.', '--', $location_alt);
+
+		// Get our data from theme_json
+		$data 			= $theme_json;
+		$has_data 		= true;
+		// Convert our Location into a property array
+		$prop 			= explode('.', $location);
+
+		// Find the theme_json key/value pair by looping through our $prop array
+		foreach($prop as $p) {
+			$temp = $data[ $p ] ?? null;
+			if (!$temp) {
+				$has_data = false;
+				break;
+			}
+			$data = $temp;
+		}
+
+		// If this store has data, create the CSS variables
+		if ($has_data && !empty($data)) {
+
+			// Loop through each key/value pair in the data
+			foreach( $data as $d => $v ) {
+				$new_classes .= sprintf(
+					".has-{$d}-{$slug}{{$css}}",
+					"var(--wp--{$location_alt}--{$d})"
+				);
+			}
+
+		}
+	}
+
+	echo sprintf('<style>%1$s</style>', $new_classes);
+});
