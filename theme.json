@@ -314,7 +314,27 @@
 				{
 					"name": "Accent",
 					"slug": "accent",
-					"color": "#9ddfe3"
+					"color": "#7CB8FF"
+				},
+				{
+					"name": "Neon Blue",
+					"slug": "accent-light",
+					"color": "#22A0FB"
+				},
+				{
+					"name": "Dark Blue",
+					"slug": "accent-dark",
+					"color": "#001C30"
+				},
+				{
+					"name": "Secondary",
+					"slug": "secondary",
+					"color": "#7CB8FF"
+				},
+				{
+					"name": "Neon Green",
+					"slug": "secondary-neon",
+					"color": "#61FFBD"
 				},
 				{
 					"name": "Black",
@@ -322,9 +342,9 @@
 					"color": "#9ddfe3"
 				},
 				{
-					"name": "Gray",
-					"slug": "gray",
-					"color": "rgba(255,255,255,0.35)"
+					"name": "Silver",
+					"slug": "silver",
+					"color": "#C6C6C6"
 				}
 			],
 			"gradients": [
@@ -350,6 +370,11 @@
 				"padding-mask": "linear-gradient(var(--wp--preset--color--base), var(--wp--preset--color--base)) padding-box",
 				"border-mask": "linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, var(--wp--preset--color--base) 20%, var(--wp--preset--color--base) 80%, rgba(255, 255, 255, 0) 100%) border-box",
 				"gloss": "linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255,255,255,0) 50%)"
+			},
+			"blur": {
+				"small": "0.5rem",
+				"normal": "1rem",
+				"large": "1.5rem"
 			},
 			"post-title": {
 				"typography": {
