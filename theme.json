@@ -312,6 +312,26 @@
 					"color": "#9ddfe3"
 				},
 				{
+					"name": "Blue",
+					"slug": "blue",
+					"color": "#0EB7FF"
+				},
+				{
+					"name": "Red",
+					"slug": "red",
+					"color": "#FF7A7A"
+				},
+				{
+					"name": "Green",
+					"slug": "green",
+					"color": "#0EFFAB"
+				},
+				{
+					"name": "Purle",
+					"slug": "purple",
+					"color": "#D77AFF"
+				},
+				{
 					"name": "Black",
 					"slug": "black",
 					"color": "#9ddfe3"
