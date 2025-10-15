@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Callout",
+	"slug": "group-callout",
+	"blockTypes": ["core/group"],
+	"styles": {
+		"spacing": {
+			"margin": {
+				"top": "var(--wp--preset--spacing--30)",
+				"bottom": "var(--wp--preset--spacing--30)"
+			},
+			"padding": {
+				"top": "var(--wp--preset--spacing--30)",
+				"bottom": "var(--wp--preset--spacing--30)",
+				"left": "var(--wp--preset--spacing--30)",
+				"right": "var(--wp--preset--spacing--30)"
+			}
+		},
+		"color": {
+			"background": "var(--wp--preset--color--purple)",
+			"text": "var(--wp--preset--color--base)"
+		},
+		"blocks": {
+		},
+		"border": {
+			"radius": "1rem",
+			"width": "1px",
+			"color": "var(--wp--preset--color--gray)",
+			"style": "solid"
+		}
+	}
+}
