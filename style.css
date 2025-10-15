@@ -101,6 +101,8 @@ body.blog {
 	.wp-block-post-terms,
 	.wp-block-post-comments-form .comment-reply-title,
 	.has-icon 
+):not(
+	.components-button
 )
 {
 	position: relative;
