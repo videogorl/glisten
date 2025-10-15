@@ -9,7 +9,6 @@
  */
 namespace Glisten;
 
-
 /**
  * Set up theme defaults and register various WordPress features.
  */
@@ -62,12 +61,12 @@ add_action( 'init', __NAMESPACE__ . '\enqueue_custom_block_styles' );
 function register_block_styles() {
 
 	$block_styles = array(
-		'core/post-terms'                    => array(
-			'icon-only' 	=> __( 'Icon Only', 'glisten' ),
+		'core/post-terms' => array(
+			'icon-only' => __( 'Icon Only', 'glisten' ),
 		),
-		'core/query'                    => array(
-			'post-grid' 	=> __( 'Post Grid', 'glisten' ),
-		)
+		'core/query'      => array(
+			'post-grid' => __( 'Post Grid', 'glisten' ),
+		),
 	);
 
 	foreach ( $block_styles as $block => $styles ) {
@@ -84,38 +83,35 @@ function register_block_styles() {
 }
 add_action( 'init', __NAMESPACE__ . '\register_block_styles' );
 
-// function change_post_template_block( $content, $block, $instance ) {
-// 	echo '<pre>'.$block['blockName'].'</pre>';
-// 	if ($block['blockName'] !== 'core/post') return $content;
-
-// 	echo '<pre>';
-// 	print_r($content);
-// 	echo '</pre>';
-// }
-// add_filter( 'render_block', __NAMESPACE__ . '\change_post_template_block', 10, 3);
-
 function change_post_content_block( $content ) {
-	if ( is_single() )
+	if ( is_single() ) {
 		return $content . '<div class="block-end"><div class="is-style-highlight-border"></div></div>';
-	else return $content;
+	} else {
+		return $content;
+	}
 }
-add_filter( 'the_content', __NAMESPACE__ . '\change_post_content_block', 10, 1);
+add_filter( 'the_content', __NAMESPACE__ . '\change_post_content_block', 10, 1 );
 
 
 function change_excerpt_block( $content, $block, $instance ) {
 	if (
 		$block['blockName'] === 'core/post-excerpt' &&
 		( is_page() || is_single() ) &&
-		!is_archive() &&
-		!has_excerpt()
-	) return '';
-	else return $content;
+		! is_archive() &&
+		! has_excerpt()
+	) {
+		return '';
+	} else {
+		return $content;
+	}
 }
-add_filter( 'render_block', __NAMESPACE__ . '\change_excerpt_block', 10, 3);
+add_filter( 'render_block', __NAMESPACE__ . '\change_excerpt_block', 10, 3 );
 
 function add_body_classes( $classes ) {
-	if (has_post_thumbnail()) $classes[] = 'has-featured-image';
-    
-    return $classes;
+	if ( has_post_thumbnail() ) {
+		$classes[] = 'has-featured-image';
+	}
+
+	return $classes;
 }
 add_filter( 'body_class', __NAMESPACE__ . '\add_body_classes' );
